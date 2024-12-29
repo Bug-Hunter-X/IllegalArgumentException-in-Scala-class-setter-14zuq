@@ -1,0 +1,19 @@
+```scala
+class MyClass(val name: String) {
+  private var _age: Int = 0
+
+  def age: Int = _age
+  def age_=(newAge: Int): Unit = {
+    try {
+      if (newAge >= 0) _age = newAge
+      else throw new IllegalArgumentException("Age cannot be negative")
+    } catch {
+      case e: IllegalArgumentException => println(s"Error setting age: "+ e.getMessage)
+    }
+  }
+}
+
+val myObj = new MyClass("John")
+myObj.age = -5 // This will now print an error message instead of crashing
+myObj.age = 30 // this will successfully set the age
+```
